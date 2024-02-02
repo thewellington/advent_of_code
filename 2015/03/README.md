@@ -1,0 +1,3 @@
+- The answer to part two is 2360, but I kept getting 2361.    Not sure what give here
+
+- oh interesting.   The first coordinate is `0`, even though I store it at `0, 0`  when I take the union of two sets, both starting at `0, 0` the first set stores the value `0` and the second set stores `0, 0` when it's united with the first.  thus indicating house `0, 0` got two visits.  Since a python set only takes one instance of each object - this is a tricky way of getting the same thing in here twice, offsetting the things.
