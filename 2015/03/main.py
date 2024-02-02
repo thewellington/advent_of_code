@@ -18,6 +18,8 @@ robo_santas_directions = data[1::2]
 def route(directions):
     x, y = 0, 0
     houses_visited = set((x, y))
+    houses_visited.remove(0)
+    print(houses_visited)
 
     for d in directions:
         if d == ">":
@@ -40,6 +42,7 @@ def year_two():
     robot = route(robo_santas_directions)
         
     houses_visited = santa.union(robot)
+    houses_visited.discard(0) # this accounts for the extra zero coordinate fromt he union
     print(houses_visited)
 
     return(houses_visited)
