@@ -13,25 +13,32 @@ import re
 
 secret_key = "yzbqklnj"
 
-counter = 1
 
-while counter > 0:
-        
-    mining_string = secret_key + str(counter)
+def miner( key, search_string ):
 
-    hash = hashlib.md5(mining_string.encode()).hexdigest()
-    
-    if re.search(r"(^00000\w+)", hash):
-        print(str(counter) + ": " + hash)
-        exit()
-                
-    counter += 1
+    counter = 1 
+    regex = re.escape(search_string)   
+    while counter > 0:
+        mining_string = key + str(counter)
+        hash = hashlib.md5(mining_string.encode()).hexdigest()
+        if re.search(f"^{regex}\w+", hash): 
+            result = (str(counter) + ": " + hash)
+            return(result)
+
+        counter += 1
     
     
 def main():
     """ Main entry point of the app """
     
-    
+    print("the lowest hash beginning with five zeros is: ")
+    result1 = miner(secret_key, "00000")
+    print(result1)
+
+    print("the lowest hash beginning with six zeros is: ")
+    result2 = miner(secret_key, "000000")
+    print(result2)
+
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
