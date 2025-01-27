@@ -8,45 +8,57 @@ __author__ = "thewellington@gmail.com"
 __version__ = ""
 __license__ = ""
 
-
+import re
 
 vowels = "AaEeIiOoUu"
-forbidden_pairs = ["ab", "cd", "pq", "xy"]
+forbidden_strings = ["ab", "cd", "pq", "xy"]
 
-'''
-def string_parser():
-    for line in input.txt
-        regex search for each forbidden_pairs
-        remove line from output
-        
-    for line in output
+
+def old_vowel_count(): 
+    for string in data:
+        get_vowels = [each for each in string if each in vowels]
+        if len(get_vowels) >= 3:
+            print(len(get_vowels))
+            return true
+
+def vowel_count(string):
+    get_vowels = [each for each in string if each in vowels]
         get vowels in each string
-            for lines with more than three vowels, add to new output
-            
-    for line in new output
-        get lines that contain at least one repeated letter
-        https://stackoverflow.com/questions/64629528/counting-repeated-characters-in-a-string-in-a-row-python    
-''' 
-    
-    
-   
+    result = bool(len(get_vowels) >= 3)
+    return result
 
-   
+def find_double_chars(string):
+    result = bool(re.search(r"(.)\1", string))
+    return result
+
+def find_forbidden(string):
+    for f in forbidden_strings:
+        forbidden = string.find(f)
+        if forbidden == -1:
+            return False
+        else:
+            return True
+
 def main():
     """ Main entry point of the app """
 
-with open('input.txt', 'r') as file:
-    data = file.readlines()
-    
-for string in data:
-    get_vowels = [each for each in string if each in vowels]
-    if len(get_vowels) >= 3:
-        print(len(get_vowels))
-    
-    
+    string_counter = 0
+
+    with open('input.txt', 'r') as file:
+        data = file.readlines()
+
+    for line in data:
+        print(line)
+        if find_forbidden(line) == True:
+            print("forbidden")
+        
+        if find_double_chars(line) == True and vowel_count(line) == True:
+            string_counter += 1
+       
+    print(string_counter)
+
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
 
 
-""" still need to take care of second and third cases """
