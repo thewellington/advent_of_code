@@ -11,8 +11,27 @@ __license__ = ""
 
 
 vowels = "AaEeIiOoUu"
-forbidden = ["ab", "cd", "pq", "xy"]
+forbidden_pairs = ["ab", "cd", "pq", "xy"]
+
+'''
+def string_parser():
+    for line in input.txt
+        regex search for each forbidden_pairs
+        remove line from output
+        
+    for line in output
+        get vowels in each string
+            for lines with more than three vowels, add to new output
+            
+    for line in new output
+        get lines that contain at least one repeated letter
+        https://stackoverflow.com/questions/64629528/counting-repeated-characters-in-a-string-in-a-row-python    
+''' 
     
+    
+   
+
+   
 def main():
     """ Main entry point of the app """
 
